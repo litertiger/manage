@@ -68,6 +68,13 @@ public interface UserService {
 	 * @return
 	 */
 	User findUserByMobile(String mobile);
+	
+	/**
+	 * 根据手机号查询用户数据
+	 * @param mobile
+	 * @return
+	 */
+	User findUserByUsername(String username);
 
 	/**
 	 * 根据手机号发送短信验证码

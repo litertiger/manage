@@ -76,6 +76,9 @@ public interface UserMapper {
 	 * @return
 	 */
 	User findUserByName(String username);
+	
+	
+	User  findUserByUsername(String username);
 
 	/**
 	 * 修改用户密码

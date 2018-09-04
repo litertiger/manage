@@ -300,4 +300,10 @@ public class UserServiceImpl implements UserService {
 	public int setUserLockNum(Integer id, int isLock) {
 		return this.userMapper.setUserLockNum(id, isLock);
 	}
+
+	@Override
+	public User findUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return this.userMapper.findUserByName(username);
+	}
 }

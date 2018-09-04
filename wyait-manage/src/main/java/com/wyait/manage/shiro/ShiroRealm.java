@@ -56,7 +56,8 @@ public class ShiroRealm extends AuthorizingRealm {
 		// 获取当前登陆用户
 		Subject subject = SecurityUtils.getSubject();
 		User user = (User) subject.getPrincipal();
-		if (user.getMobile().equals("18516596566")) {
+		//if (user.getMobile().equals("18516596566")) {
+			if (user.getUsername().equals("admin")) {
 			// 超级管理员，添加所有角色、添加所有权限
 			authorizationInfo.addRole("*");
 			authorizationInfo.addStringPermission("*");
@@ -100,7 +101,8 @@ public class ShiroRealm extends AuthorizingRealm {
 				.toString(token, ToStringStyle.MULTI_LINE_STYLE));
 		String mobile = token.getUsername();
 		// 调用数据层
-		User user = userMapper.findUserByMobile(mobile);
+		//User user = userMapper.findUserByMobile(mobile);
+		User user = userMapper.findUserByUsername(mobile);
 
 		logger.debug("用户登录认证！用户信息user：" + user);
 		if (user == null) {
@@ -111,6 +113,7 @@ public class ShiroRealm extends AuthorizingRealm {
 			// 第一个参数 ，登陆后，需要在session保存数据
 			// 第二个参数，查询到密码(加密规则要和自定义的HashedCredentialsMatcher中的HashAlgorithmName散列算法一致)
 			// 第三个参数 ，realm名字
+			System.out.println(user.getPassword());
 			return new SimpleAuthenticationInfo(user, DigestUtils.md5Hex(user.getPassword()),
 					getName());
 		}

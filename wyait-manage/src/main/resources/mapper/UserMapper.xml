@@ -292,7 +292,7 @@
 	<!--=Start findUser 根据用户名和密码查找用户 -->
 	<select id="findUser" resultType="com.wyait.manage.pojo.User">
 		select
-		id, username, mobile,
+		id, username, mobile,password,
 		email, insert_uid insertUid, insert_time
 		insertTime, update_time
 		updateTime, is_del isDel,is_job
@@ -303,6 +303,18 @@
 		is_job=0
 	</select>
 	<!--=End findUser 根据用户名和密码查找用户 -->
+	
+	<!-- 根据用户名查找用户 -->
+	<select id="findUserByUsername" resultType="com.wyait.manage.pojo.User">
+		select
+		id, username,
+		mobile,password, email, insert_uid insertUid, insert_time
+		insertTime,
+		update_time, is_del,is_job,mcode,send_time sendTime,version
+		from user
+		WHERE
+		username=#{username} and is_del=0
+	</select>
 	<!--=Start findUserByMobile 根据手机号获取用户数据 -->
 	<select id="findUserByMobile" resultType="com.wyait.manage.pojo.User">
 		select
